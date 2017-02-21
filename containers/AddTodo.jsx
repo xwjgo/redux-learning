@@ -23,6 +23,6 @@ let AddTodo = ({dispatch}) => {
     );
 };
 
-AddTodo = connect()(AddTodo);
+AddTodo = connect()(AddTodo);   // 赋予AddTodo组件dispatch的能力，通过props来将dispatch函数传递给AddTodo
 
 export default AddTodo;
