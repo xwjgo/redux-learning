@@ -1,8 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {addTodo} from '../actions';
+import * as actionCreators from '../actions';
+import {bindActionCreators} from 'redux';
 
-let AddTodo = ({dispatch}) => {
+let AddTodo = (props) => {
     let input;
     return (
         <form onSubmit={e => {
@@ -10,7 +11,7 @@ let AddTodo = ({dispatch}) => {
             if (!input.value.trim()) {
                 return;
             }
-            dispatch(addTodo(input.value));
+            props.actions.addTodo(input.value.trim());
             input.value = '';
         }}>
             <input ref={node => {
@@ -23,6 +24,12 @@ let AddTodo = ({dispatch}) => {
     );
 };
 
-AddTodo = connect()(AddTodo);   // 赋予AddTodo组件dispatch的能力，通过props来将dispatch函数传递给AddTodo
+function mapDispatchToProps (dispatch) {
+    return {
+        actions: bindActionCreators(actionCreators, dispatch)
+    }
+}
+
+AddTodo = connect(null, mapDispatchToProps)(AddTodo);   // 赋予AddTodo组件dispatch的能力，通过props来将dispatch函数传递给AddTodo
 
 export default AddTodo;
