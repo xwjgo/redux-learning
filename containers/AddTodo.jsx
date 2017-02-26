@@ -18,7 +18,7 @@ let AddTodo = (props) => {
                 input = node
             }}/>
             <button type="submit">
-                Add Todo
+                添加 todo
             </button>
         </form>
     );
