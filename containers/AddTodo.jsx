@@ -18,6 +18,10 @@ let AddTodo = (props) => {
                     });
                 return;
             }
+            require.ensure(['moment'], require => {   // 另外一种按需加载
+                const moment = require('moment');
+                console.log(moment().format('dddd'));
+            });
             props.actions.addTodo(input.value.trim());
             input.value = '';
         }}>
