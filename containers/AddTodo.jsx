@@ -9,6 +9,13 @@ let AddTodo = (props) => {
         <form onSubmit={e => {
             e.preventDefault();
             if (!input.value.trim()) {
+                import('moment')    // 动态import，实现按需（异步）加载
+                    .then(moment => {
+                        console.log(moment().format('MMMM Do YYYY, h:mm:ss a'));
+                    })
+                    .catch(err => {
+                        console.log(`moment加载失败:${err}`);
+                    });
                 return;
             }
             props.actions.addTodo(input.value.trim());

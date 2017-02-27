@@ -5,11 +5,12 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     entry: {
         app: './index.js',
-        vendor: ['lodash', 'react', 'react-dom', 'redux', 'react-redux']
+        vendor: ['react', 'react-dom', 'redux', 'react-redux']
     },
     output: {
         filename: '[name].js',
-        path: path.join(__dirname, 'public')
+        path: path.join(__dirname, 'public'),
+        publicPath: './public/' // 以引用静态资源的html的视角来看，output.path的url
     },
     module: {
         rules: [
@@ -18,7 +19,8 @@ module.exports = {
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['react', 'es2015']
+                    presets: ['react', 'es2015'],
+                    plugins: ['syntax-dynamic-import']
                 }
             }, {
                 test: /\.less$/,
