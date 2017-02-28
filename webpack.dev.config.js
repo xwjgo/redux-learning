@@ -1,11 +1,10 @@
 const path = require('path');
-const fs = require('fs');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// production
+// dev
 module.exports = {
-    devtool: 'source-map',  // 可以生成sourceMap
+    devtool: 'cheap-eval-source-map',
     entry: {
         app: './index.js',
         vendor: ['react', 'react-dom', 'redux', 'react-redux']
@@ -39,12 +38,6 @@ module.exports = {
         new ExtractTextPlugin('index.css'),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest']
-        }),
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify('production')
-        }),
-        new webpack.optimize.UglifyJsPlugin({   // 压缩代码
-            sourceMap: true
         })
     ]
 };

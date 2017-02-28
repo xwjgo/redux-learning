@@ -4,8 +4,8 @@
   "description": "xwj's redux-learning",
   "main": "index.js",
   "scripts": {
-    "build-dev": "webpack --config webpack.config.js",
-    "build-product": "webpack -b --config webpack.config.js"
+    "build-dev": "webpack --config webpack.dev.config.js",
+    "build-product": "webpack --config webpack.config.js"
   },
   "author": "xwj",
   "license": "ISC",
