@@ -4,7 +4,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // dev
 module.exports = {
-    devtool: 'cheap-eval-source-map',
+    devtool: 'cheap-eval-source-map',   // 不需要uglify也可以使用sourceMap
     entry: {
         app: './index.js',
         vendor: ['react', 'react-dom', 'redux', 'react-redux']
