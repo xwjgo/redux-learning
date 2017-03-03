@@ -13,7 +13,7 @@ module.exports = {
         filename: '[name].js',
         path: path.join(__dirname, 'public'),
         publicPath: '/assets/', // 服务器server地址（虚拟的，可以不存在）以引用静态资源的html的视角来看，output.path的url
-        chunkFilename: '[id].chunk.js'  // 按需加载的脚本名称
+        chunkFilename: '[id].[name].chunk.js'  // 按需加载的脚本名称
     },
     module: {
         rules: [

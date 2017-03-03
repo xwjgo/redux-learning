@@ -18,10 +18,11 @@ let AddTodo = (props) => {
                     });
                 return;
             }
-            require.ensure(['moment'], require => {   // 另外一种按需加载
-                const moment = require('moment');
-                console.log(moment().format('dddd'));
-            });
+            require.ensure(['../testModules/a', '../testModules/b'], require => {   // 另外一种按需加载
+                require('../testModules/b');
+                require('../testModules/c');
+                console.log('done!')
+            }, 'test'); // 这里指定名称对应为output.chunkFilename的[name]占位符
             props.actions.addTodo(input.value.trim());
             input.value = '';
         }}>
