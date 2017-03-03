@@ -1,13 +1,14 @@
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 
 // dev
 module.exports = {
     devtool: 'cheap-eval-source-map',   // 不需要uglify也可以使用sourceMap
     entry: {
-        app: './index.js',
-        vendor: ['react', 'react-dom', 'redux', 'react-redux']
+        app: ['./index.js', HotMiddlewareScript],
+        vendor: ['react', 'react-dom', 'redux', 'react-redux', HotMiddlewareScript]
     },
     output: {
         filename: '[name].js',
@@ -38,6 +39,7 @@ module.exports = {
         new ExtractTextPlugin('index.css'),
         new webpack.optimize.CommonsChunkPlugin({
             names: ['vendor', 'manifest']
-        })
+        }),
+        new webpack.HotModuleReplacementPlugin()   // 热加载插件
     ]
 };
